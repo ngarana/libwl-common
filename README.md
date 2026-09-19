@@ -19,15 +19,21 @@ qypr's full 407-line upstream).
 
 ## Consuming (both repos already do this)
 
+Only `protocols/` is shared, so consumers track a split branch, not `main`:
+
 ```sh
 # first time (replaces the local protocols/ directory):
 git rm -r protocols
 git commit -m "chore: clear protocols/ for libwl-common subtree"
-git subtree add --prefix=protocols <libwl-common-remote> main --squash
+git subtree add --prefix=protocols <libwl-common-remote> protocols-only --squash
 
-# pull updates:
-git subtree pull --prefix=protocols <libwl-common-remote> main --squash
+# pull updates (re-split here first, then pull the split branch there):
+git subtree split -P protocols -b protocols-only   # in libwl-common
+git subtree pull --prefix=protocols <libwl-common-remote> protocols-only --squash
 ```
+
+`<libwl-common-remote>` is currently a local path; point it at the GitHub
+remote once the maintainer creates `ngarana/libwl-common`.
 
 Build paths are unchanged: each repo's CMake still globs its own
 `protocols/` dir and runs its own `wayland-scanner` rules (including the
