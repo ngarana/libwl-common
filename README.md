@@ -10,26 +10,26 @@ qypr's full 407-line upstream).
 
 ## Contents
 
-| File | Source of truth | Notes |
+| Path | Source of truth | Notes |
 |---|---|---|
 | `protocols/wlr-layer-shell-unstable-v1.xml` | upstream v5 (identical in both repos) | `get_layer_surface` has a `namespace` arg — a C++ keyword; both repos firewall it at codegen (qypr `qypr_gen_protocol`, waylaunch `cmake/fix_scanner_keywords.cmake`) |
 | `protocols/wlr-foreign-toplevel-management-unstable-v1.xml` | qypr's copy (newer: `finished` destructor type, `fullscreen since="2"`) | waylaunch's older copy had comment drift and no destructor type |
 | `protocols/wlr-screencopy-unstable-v1.xml` | waylaunch's copy (backdrop blur) | unused by qypr (vendored for the union) |
 | `protocols/wlr-gamma-control-unstable-v1.xml` | qypr's copy (night light) | unused by waylaunch (vendored for the union) |
+| `core/EventLoop.hpp` / `core/EventLoop.cpp` | qypr's epoll reactor | Single-threaded fd/timer/post multiplexing. Shared code follows qypr conventions (`namespace qypr`, `PascalCase`, `camelBack`) per the integration plan — including in waylaunch, which consumes it as-is |
 
 ## Consuming (both repos already do this)
 
-Only `protocols/` is shared, so consumers track a split branch, not `main`:
+One subtree per repo at `third-party/libwl-common`, root on the include
+path so `#include "core/EventLoop.hpp"` (and the `protocols/` dir for
+scanner rules) resolve identically everywhere:
 
 ```sh
-# first time (replaces the local protocols/ directory):
-git rm -r protocols
-git commit -m "chore: clear protocols/ for libwl-common subtree"
-git subtree add --prefix=protocols <libwl-common-remote> protocols-only --squash
+# first time:
+git subtree add --prefix=third-party/libwl-common <libwl-common-remote> main --squash
 
-# pull updates (re-split here first, then pull the split branch there):
-git subtree split -P protocols -b protocols-only   # in libwl-common
-git subtree pull --prefix=protocols <libwl-common-remote> protocols-only --squash
+# pull updates:
+git subtree pull --prefix=third-party/libwl-common <libwl-common-remote> main --squash
 ```
 
 `<libwl-common-remote>` is currently a local path; point it at the GitHub
