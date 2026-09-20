@@ -32,8 +32,8 @@ git subtree add --prefix=third-party/libwl-common <libwl-common-remote> main --s
 git subtree pull --prefix=third-party/libwl-common <libwl-common-remote> main --squash
 ```
 
-`<libwl-common-remote>` is currently a local path; point it at the GitHub
-remote once the maintainer creates `ngarana/libwl-common`.
+`<libwl-common-remote>` is `https://github.com/ngarana/libwl-common`
+(registered as the `libwl-common` git remote in both consumers).
 
 Build paths are unchanged: each repo's CMake still globs its own
 `protocols/` dir and runs its own `wayland-scanner` rules (including the
