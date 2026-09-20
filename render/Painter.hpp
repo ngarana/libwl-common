@@ -57,11 +57,9 @@ public:
     // "qypr-bar") the translucency reads as real frost; without blur the sheen +
     // border still give a glassy panel.
     // `solid` renders an opaque card (no translucency/sheen); qypr passes
-    // its theme style flag here so this unit stays theme-free (shared).""
-"
-    "    void fillGlass(const Rect& r, double radius, const Color& base, const Color& border,
-"
-    "                   bool solid = false);
+    // its theme style flag here so this unit stays theme-free (shared).
+    void fillGlass(const Rect& r, double radius, const Color& base, const Color& border,
+                   bool solid = false);
     void fillCircle(double cx, double cy, double radius, const Color& c);
     void strokeCircle(double cx, double cy, double radius, const Color& c, double lineWidth);
 
