@@ -39,13 +39,16 @@ std::string resolveToolPath(const std::string& name);
 // The child always starts with SIGCHLD and SIGPIPE at SIG_DFL, whatever the
 // parent's dispositions are. `newSession` gives the child its own session
 // (setsid), so a command that outlives the panel is not tied to it.
+// `devnull_stdio` rewires stdin/stdout/stderr to /dev/null (for hooks whose
+// output must not pollute the parent's terminal or logs).
 //
 // NOTE: this deliberately does NOT double-fork. A detached child needs
 // reaping — use spawnReaped() with the loop. Fire-and-forget without a loop
 // leaks a zombie when the child exits before its parent.
 pid_t spawnDetached(const std::string& path, const std::vector<std::string>& args,
                     bool newSession = false,
-                    const std::vector<std::string>& env_add = {});
+                    const std::vector<std::string>& env_add = {},
+                    bool devnull_stdio = false);
 
 // spawnDetached() plus reaping: the child's pidfd is watched through the event
 // loop, so the loop is woken when the child exits and waitpid() reaps it there.
@@ -53,6 +56,7 @@ pid_t spawnDetached(const std::string& path, const std::vector<std::string>& arg
 // Returns the child's pid, or -1.
 pid_t spawnReaped(EventLoop& loop, const std::string& path,
                   const std::vector<std::string>& args, bool newSession = false,
-                  const std::vector<std::string>& env_add = {});
+                  const std::vector<std::string>& env_add = {},
+                  bool devnull_stdio = false);
 
 }  // namespace qypr

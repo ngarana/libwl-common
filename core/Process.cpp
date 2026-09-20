@@ -1,6 +1,7 @@
 // Process.cpp - see the header for the rationale (QL-5, QL-6).
 #include "core/Process.hpp"
 
+#include <fcntl.h>
 #include <spawn.h>
 #include <sys/syscall.h>
 #include <sys/wait.h>
@@ -70,7 +71,8 @@ std::string resolveToolPath(const std::string& name) {
 }
 
 pid_t spawnDetached(const std::string& path, const std::vector<std::string>& args,
-                    bool newSession, const std::vector<std::string>& env_add) {
+                    bool newSession, const std::vector<std::string>& env_add,
+                    bool devnull_stdio) {
     if (path.empty()) return -1;
 
     std::vector<char*> argv;
@@ -88,20 +90,44 @@ pid_t spawnDetached(const std::string& path, const std::vector<std::string>& arg
     for (auto& e : env_owned) envp.push_back(e.data());
     envp.push_back(nullptr);
 
+    posix_spawn_file_actions_t actions;
+    bool actions_ready = posix_spawn_file_actions_init(&actions) == 0;
+    if (actions_ready && devnull_stdio) {
+        // Open /dev/null once, fan out to 0/1/2, close the original: the
+        // hook inherits no terminal and logs nothing into the parent's fds.
+        actions_ready =
+            posix_spawn_file_actions_addopen(&actions, 3, "/dev/null", O_RDWR, 0) == 0 &&
+            posix_spawn_file_actions_adddup2(&actions, 3, STDIN_FILENO) == 0 &&
+            posix_spawn_file_actions_adddup2(&actions, 3, STDOUT_FILENO) == 0 &&
+            posix_spawn_file_actions_adddup2(&actions, 3, STDERR_FILENO) == 0 &&
+            posix_spawn_file_actions_addclose(&actions, 3) == 0;
+    }
+
     posix_spawnattr_t attr;
-    if (posix_spawnattr_init(&attr) != 0) return -1;
-    setChildAttributes(attr, newSession);
+    bool attrs_ready = posix_spawnattr_init(&attr) == 0;
+    if (attrs_ready) {
+        setChildAttributes(attr, newSession);
+    } else {
+        // Attribute setup failed: without SIGDEF/setsid guarantees, refuse
+        // rather than spawn a misconfigured child.
+        if (actions_ready) posix_spawn_file_actions_destroy(&actions);
+        return -1;
+    }
 
     pid_t pid = -1;
-    const int rc = posix_spawn(&pid, path.c_str(), /*fileActions=*/nullptr, &attr, argv.data(),
-                               envp.data());
+    const int rc =
+        actions_ready
+            ? posix_spawn(&pid, path.c_str(), &actions, &attr, argv.data(), envp.data())
+            : -1;
     posix_spawnattr_destroy(&attr);
+    if (actions_ready) posix_spawn_file_actions_destroy(&actions);
     return rc == 0 ? pid : -1;
 }
 
 pid_t spawnReaped(EventLoop& loop, const std::string& path, const std::vector<std::string>& args,
-                  bool newSession, const std::vector<std::string>& env_add) {
-    const pid_t pid = spawnDetached(path, args, newSession, env_add);
+                  bool newSession, const std::vector<std::string>& env_add,
+                  bool devnull_stdio) {
+    const pid_t pid = spawnDetached(path, args, newSession, env_add, devnull_stdio);
     if (pid <= 0) return pid;
 
 #if defined(SYS_pidfd_open)
