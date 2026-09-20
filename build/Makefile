@@ -139,6 +139,19 @@ blur_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/blur_test.dir/build.make CMakeFiles/blur_test.dir/build
 .PHONY : blur_test/fast
 
+#=============================================================================
+# Target rules for targets named icon_test
+
+# Build rule for target.
+icon_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 icon_test
+.PHONY : icon_test
+
+# fast build rule for target.
+icon_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/build
+.PHONY : icon_test/fast
+
 render/BackdropBlur.o: render/BackdropBlur.cpp.o
 .PHONY : render/BackdropBlur.o
 
@@ -162,6 +175,30 @@ render/BackdropBlur.s: render/BackdropBlur.cpp.s
 render/BackdropBlur.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/blur_test.dir/build.make CMakeFiles/blur_test.dir/render/BackdropBlur.cpp.s
 .PHONY : render/BackdropBlur.cpp.s
+
+render/IconResolver.o: render/IconResolver.cpp.o
+.PHONY : render/IconResolver.o
+
+# target to build an object file
+render/IconResolver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/render/IconResolver.cpp.o
+.PHONY : render/IconResolver.cpp.o
+
+render/IconResolver.i: render/IconResolver.cpp.i
+.PHONY : render/IconResolver.i
+
+# target to preprocess a source file
+render/IconResolver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/render/IconResolver.cpp.i
+.PHONY : render/IconResolver.cpp.i
+
+render/IconResolver.s: render/IconResolver.cpp.s
+.PHONY : render/IconResolver.s
+
+# target to generate assembly for a file
+render/IconResolver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/render/IconResolver.cpp.s
+.PHONY : render/IconResolver.cpp.s
 
 tests/blur_test.o: tests/blur_test.cpp.o
 .PHONY : tests/blur_test.o
@@ -187,6 +224,30 @@ tests/blur_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/blur_test.dir/build.make CMakeFiles/blur_test.dir/tests/blur_test.cpp.s
 .PHONY : tests/blur_test.cpp.s
 
+tests/icon_test.o: tests/icon_test.cpp.o
+.PHONY : tests/icon_test.o
+
+# target to build an object file
+tests/icon_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/tests/icon_test.cpp.o
+.PHONY : tests/icon_test.cpp.o
+
+tests/icon_test.i: tests/icon_test.cpp.i
+.PHONY : tests/icon_test.i
+
+# target to preprocess a source file
+tests/icon_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/tests/icon_test.cpp.i
+.PHONY : tests/icon_test.cpp.i
+
+tests/icon_test.s: tests/icon_test.cpp.s
+.PHONY : tests/icon_test.s
+
+# target to generate assembly for a file
+tests/icon_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/tests/icon_test.cpp.s
+.PHONY : tests/icon_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -197,12 +258,19 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... blur_test"
+	@echo "... icon_test"
 	@echo "... render/BackdropBlur.o"
 	@echo "... render/BackdropBlur.i"
 	@echo "... render/BackdropBlur.s"
+	@echo "... render/IconResolver.o"
+	@echo "... render/IconResolver.i"
+	@echo "... render/IconResolver.s"
 	@echo "... tests/blur_test.o"
 	@echo "... tests/blur_test.i"
 	@echo "... tests/blur_test.s"
+	@echo "... tests/icon_test.o"
+	@echo "... tests/icon_test.i"
+	@echo "... tests/icon_test.s"
 .PHONY : help
 
 

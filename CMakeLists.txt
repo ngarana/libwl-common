@@ -24,4 +24,14 @@ if(BUILD_TESTING)
     target_link_libraries(blur_test PRIVATE ${CAIRO_LIBRARIES})
     target_compile_options(blur_test PRIVATE ${CAIRO_CFLAGS} -Wall -Wextra -UNDEBUG)
     add_test(NAME blur_test COMMAND blur_test)
+
+    pkg_check_modules(RSVG REQUIRED librsvg-2.0)
+    add_executable(icon_test tests/icon_test.cpp render/IconResolver.cpp)
+    target_include_directories(icon_test PRIVATE
+        ${CMAKE_SOURCE_DIR}
+        ${CAIRO_INCLUDE_DIRS}
+        ${RSVG_INCLUDE_DIRS})
+    target_link_libraries(icon_test PRIVATE ${CAIRO_LIBRARIES} ${RSVG_LIBRARIES})
+    target_compile_options(icon_test PRIVATE ${CAIRO_CFLAGS} ${RSVG_CFLAGS} -Wall -Wextra -UNDEBUG)
+    add_test(NAME icon_test COMMAND icon_test)
 endif()

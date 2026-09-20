@@ -216,6 +216,24 @@ libwl-common_SOURCE_DIR:STATIC=/home/arch/Coding/libwl-common
 //Path to a library.
 pkgcfg_lib_CAIRO_cairo:FILEPATH=/usr/lib/libcairo.so
 
+//Path to a library.
+pkgcfg_lib_RSVG_cairo:FILEPATH=/usr/lib/libcairo.so
+
+//Path to a library.
+pkgcfg_lib_RSVG_gdk_pixbuf-2.0:FILEPATH=/usr/lib/libgdk_pixbuf-2.0.so
+
+//Path to a library.
+pkgcfg_lib_RSVG_gio-2.0:FILEPATH=/usr/lib/libgio-2.0.so
+
+//Path to a library.
+pkgcfg_lib_RSVG_glib-2.0:FILEPATH=/usr/lib/libglib-2.0.so
+
+//Path to a library.
+pkgcfg_lib_RSVG_gobject-2.0:FILEPATH=/usr/lib/libgobject-2.0.so
+
+//Path to a library.
+pkgcfg_lib_RSVG_rsvg-2:FILEPATH=/usr/lib/librsvg-2.so
+
 
 ########################
 # INTERNAL cache entries
@@ -402,9 +420,58 @@ FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v3.0.7()]
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+RSVG_CFLAGS:INTERNAL=-I/usr/include/librsvg-2.0;-I/usr/include/gdk-pixbuf-2.0;-I/usr/include/glycin-2;-I/usr/include;-I/usr/include/cairo;-I/usr/include/libxml2;-I/usr/include/pango-1.0;-I/usr/include/libmount;-I/usr/include/blkid;-I/usr/include/fribidi;-I/usr/include/pixman-1;-I/usr/include/harfbuzz;-I/usr/include/freetype2;-I/usr/include/libpng16;-I/usr/include/glib-2.0;-I/usr/lib/glib-2.0/include;-I/usr/include/sysprof-6;-pthread
+RSVG_CFLAGS_I:INTERNAL=
+RSVG_CFLAGS_OTHER:INTERNAL=-pthread
+RSVG_FOUND:INTERNAL=1
+RSVG_INCLUDEDIR:INTERNAL=/usr/include
+RSVG_INCLUDE_DIRS:INTERNAL=/usr/include/librsvg-2.0;/usr/include/gdk-pixbuf-2.0;/usr/include/glycin-2;/usr/include;/usr/include/cairo;/usr/include/libxml2;/usr/include/pango-1.0;/usr/include/libmount;/usr/include/blkid;/usr/include/fribidi;/usr/include/pixman-1;/usr/include/harfbuzz;/usr/include/freetype2;/usr/include/libpng16;/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/sysprof-6
+RSVG_LDFLAGS:INTERNAL=-L/usr/lib;-lrsvg-2;-lgdk_pixbuf-2.0;-lgio-2.0;-lcairo;-lgobject-2.0;-lglib-2.0
+RSVG_LDFLAGS_OTHER:INTERNAL=
+RSVG_LIBDIR:INTERNAL=/usr/lib
+RSVG_LIBRARIES:INTERNAL=rsvg-2;gdk_pixbuf-2.0;gio-2.0;cairo;gobject-2.0;glib-2.0
+RSVG_LIBRARY_DIRS:INTERNAL=/usr/lib
+RSVG_LIBS:INTERNAL=
+RSVG_LIBS_L:INTERNAL=
+RSVG_LIBS_OTHER:INTERNAL=
+RSVG_LIBS_PATHS:INTERNAL=
+RSVG_MODULE_NAME:INTERNAL=librsvg-2.0
+RSVG_PREFIX:INTERNAL=/usr
+RSVG_STATIC_CFLAGS:INTERNAL=-I/usr/include/librsvg-2.0;-I/usr/include/gdk-pixbuf-2.0;-I/usr/include/glycin-2;-I/usr/include;-I/usr/include/cairo;-I/usr/include/libxml2;-I/usr/include/pango-1.0;-I/usr/include/libmount;-I/usr/include/blkid;-I/usr/include/fribidi;-I/usr/include/pixman-1;-I/usr/include/harfbuzz;-I/usr/include/freetype2;-I/usr/include/libpng16;-I/usr/include/glib-2.0;-I/usr/lib/glib-2.0/include;-I/usr/include/sysprof-6;-pthread;-DXML_STATIC
+RSVG_STATIC_CFLAGS_I:INTERNAL=
+RSVG_STATIC_CFLAGS_OTHER:INTERNAL=-pthread;-DXML_STATIC
+RSVG_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/librsvg-2.0;/usr/include/gdk-pixbuf-2.0;/usr/include/glycin-2;/usr/include;/usr/include/cairo;/usr/include/libxml2;/usr/include/pango-1.0;/usr/include/libmount;/usr/include/blkid;/usr/include/fribidi;/usr/include/pixman-1;/usr/include/harfbuzz;/usr/include/freetype2;/usr/include/libpng16;/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/sysprof-6
+RSVG_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lrsvg-2;-lpthread;-lrt;-lutil;-lgcc_s;-lc;-lm;-ldl;-lgdk_pixbuf-2.0;-lm;-lglycin-2;-lseccomp;-llcms2;-lm;-lpthread;-lcairo-gobject;-lm;-ldl;-ldav1d;-ldl;-lxml2;-lm;-pthread;-licuuc;-licudata;-lpthread;-lm;-lpangocairo-1.0;-lm;-lpangoft2-1.0;-lm;-lpango-1.0;-lm;-lgio-2.0;-lmount;-lblkid;-lsystemd;-lfribidi;-lthai;-ldatrie;-lXft;-lcairo;-lm;-ldl;-lfontconfig;-pthread;-lm;-lexpat;-lm;-lXext;-lXrender;-lX11;-lpthread;-lxcb-render;-lxcb-shm;-lxcb;-lXau;-lXdmcp;-lpixman-1;-lm;-lharfbuzz-gobject;-lharfbuzz;-pthread;-lm;-lfreetype;-ldl;-lbz2;-lpng16;-lm;-lm;-lz;-lbrotlidec;-lbrotlicommon;-lgraphite2;-lgobject-2.0;-lffi;-Wl,--export-dynamic;-lgmodule-2.0;-pthread;-lglib-2.0;-latomic;-lm;-pthread;-lsysprof-capture-4;-Wl,-z,nodelete;-pthread;-lpcre2-8;-pthread;-lpthread
+RSVG_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread;-pthread;-Wl,--export-dynamic;-pthread;-pthread;-Wl,-z,nodelete;-pthread;-pthread
+RSVG_STATIC_LIBDIR:INTERNAL=
+RSVG_STATIC_LIBRARIES:INTERNAL=rsvg-2;pthread;rt;util;gcc_s;c;m;dl;gdk_pixbuf-2.0;m;glycin-2;seccomp;lcms2;m;pthread;cairo-gobject;m;dl;dav1d;dl;xml2;m;icuuc;icudata;pthread;m;pangocairo-1.0;m;pangoft2-1.0;m;pango-1.0;m;gio-2.0;mount;blkid;systemd;fribidi;thai;datrie;Xft;cairo;m;dl;fontconfig;m;expat;m;Xext;Xrender;X11;pthread;xcb-render;xcb-shm;xcb;Xau;Xdmcp;pixman-1;m;harfbuzz-gobject;harfbuzz;m;freetype;dl;bz2;png16;m;m;z;brotlidec;brotlicommon;graphite2;gobject-2.0;ffi;gmodule-2.0;glib-2.0;atomic;m;sysprof-capture-4;pcre2-8;pthread
+RSVG_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+RSVG_STATIC_LIBS:INTERNAL=
+RSVG_STATIC_LIBS_L:INTERNAL=
+RSVG_STATIC_LIBS_OTHER:INTERNAL=
+RSVG_STATIC_LIBS_PATHS:INTERNAL=
+RSVG_VERSION:INTERNAL=2.62.3
+RSVG_librsvg-2.0_INCLUDEDIR:INTERNAL=
+RSVG_librsvg-2.0_LIBDIR:INTERNAL=
+RSVG_librsvg-2.0_PREFIX:INTERNAL=
+RSVG_librsvg-2.0_VERSION:INTERNAL=
 __pkg_config_arguments_CAIRO:INTERNAL=REQUIRED;cairo
+__pkg_config_arguments_RSVG:INTERNAL=REQUIRED;librsvg-2.0
 __pkg_config_checked_CAIRO:INTERNAL=1
+__pkg_config_checked_RSVG:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_CAIRO_cairo
 pkgcfg_lib_CAIRO_cairo-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RSVG_cairo
+pkgcfg_lib_RSVG_cairo-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RSVG_gdk_pixbuf-2.0
+pkgcfg_lib_RSVG_gdk_pixbuf-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RSVG_gio-2.0
+pkgcfg_lib_RSVG_gio-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RSVG_glib-2.0
+pkgcfg_lib_RSVG_glib-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RSVG_gobject-2.0
+pkgcfg_lib_RSVG_gobject-2.0-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RSVG_rsvg-2
+pkgcfg_lib_RSVG_rsvg-2-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib
 
