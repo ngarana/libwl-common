@@ -1,0 +1,18 @@
+Start testing: Sep 20 13:48 EAT
+----------------------------------------------------------
+1/1 Testing: blur_test
+1/1 Test: blur_test
+Command: "/home/arch/Coding/libwl-common/build/blur_test"
+Directory: /home/arch/Coding/libwl-common/build
+"blur_test" start time: Sep 20 13:48 EAT
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Failed.
+"blur_test" end time: Sep 20 13:48 EAT
+"blur_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 20 13:48 EAT
