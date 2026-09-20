@@ -52,4 +52,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/blur_test.dir/DependInfo.cmake"
   "CMakeFiles/icon_test.dir/DependInfo.cmake"
+  "CMakeFiles/desktop_test.dir/DependInfo.cmake"
   )

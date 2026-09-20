@@ -152,6 +152,67 @@ icon_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/build
 .PHONY : icon_test/fast
 
+#=============================================================================
+# Target rules for targets named desktop_test
+
+# Build rule for target.
+desktop_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 desktop_test
+.PHONY : desktop_test
+
+# fast build rule for target.
+desktop_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/build
+.PHONY : desktop_test/fast
+
+core/EventLoop.o: core/EventLoop.cpp.o
+.PHONY : core/EventLoop.o
+
+# target to build an object file
+core/EventLoop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/core/EventLoop.cpp.o
+.PHONY : core/EventLoop.cpp.o
+
+core/EventLoop.i: core/EventLoop.cpp.i
+.PHONY : core/EventLoop.i
+
+# target to preprocess a source file
+core/EventLoop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/core/EventLoop.cpp.i
+.PHONY : core/EventLoop.cpp.i
+
+core/EventLoop.s: core/EventLoop.cpp.s
+.PHONY : core/EventLoop.s
+
+# target to generate assembly for a file
+core/EventLoop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/core/EventLoop.cpp.s
+.PHONY : core/EventLoop.cpp.s
+
+core/Process.o: core/Process.cpp.o
+.PHONY : core/Process.o
+
+# target to build an object file
+core/Process.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/core/Process.cpp.o
+.PHONY : core/Process.cpp.o
+
+core/Process.i: core/Process.cpp.i
+.PHONY : core/Process.i
+
+# target to preprocess a source file
+core/Process.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/core/Process.cpp.i
+.PHONY : core/Process.cpp.i
+
+core/Process.s: core/Process.cpp.s
+.PHONY : core/Process.s
+
+# target to generate assembly for a file
+core/Process.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/core/Process.cpp.s
+.PHONY : core/Process.cpp.s
+
 render/BackdropBlur.o: render/BackdropBlur.cpp.o
 .PHONY : render/BackdropBlur.o
 
@@ -200,6 +261,30 @@ render/IconResolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/icon_test.dir/build.make CMakeFiles/icon_test.dir/render/IconResolver.cpp.s
 .PHONY : render/IconResolver.cpp.s
 
+system/DesktopIndex.o: system/DesktopIndex.cpp.o
+.PHONY : system/DesktopIndex.o
+
+# target to build an object file
+system/DesktopIndex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/system/DesktopIndex.cpp.o
+.PHONY : system/DesktopIndex.cpp.o
+
+system/DesktopIndex.i: system/DesktopIndex.cpp.i
+.PHONY : system/DesktopIndex.i
+
+# target to preprocess a source file
+system/DesktopIndex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/system/DesktopIndex.cpp.i
+.PHONY : system/DesktopIndex.cpp.i
+
+system/DesktopIndex.s: system/DesktopIndex.cpp.s
+.PHONY : system/DesktopIndex.s
+
+# target to generate assembly for a file
+system/DesktopIndex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/system/DesktopIndex.cpp.s
+.PHONY : system/DesktopIndex.cpp.s
+
 tests/blur_test.o: tests/blur_test.cpp.o
 .PHONY : tests/blur_test.o
 
@@ -223,6 +308,30 @@ tests/blur_test.s: tests/blur_test.cpp.s
 tests/blur_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/blur_test.dir/build.make CMakeFiles/blur_test.dir/tests/blur_test.cpp.s
 .PHONY : tests/blur_test.cpp.s
+
+tests/desktop_test.o: tests/desktop_test.cpp.o
+.PHONY : tests/desktop_test.o
+
+# target to build an object file
+tests/desktop_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/tests/desktop_test.cpp.o
+.PHONY : tests/desktop_test.cpp.o
+
+tests/desktop_test.i: tests/desktop_test.cpp.i
+.PHONY : tests/desktop_test.i
+
+# target to preprocess a source file
+tests/desktop_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/tests/desktop_test.cpp.i
+.PHONY : tests/desktop_test.cpp.i
+
+tests/desktop_test.s: tests/desktop_test.cpp.s
+.PHONY : tests/desktop_test.s
+
+# target to generate assembly for a file
+tests/desktop_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/desktop_test.dir/build.make CMakeFiles/desktop_test.dir/tests/desktop_test.cpp.s
+.PHONY : tests/desktop_test.cpp.s
 
 tests/icon_test.o: tests/icon_test.cpp.o
 .PHONY : tests/icon_test.o
@@ -258,16 +367,29 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... blur_test"
+	@echo "... desktop_test"
 	@echo "... icon_test"
+	@echo "... core/EventLoop.o"
+	@echo "... core/EventLoop.i"
+	@echo "... core/EventLoop.s"
+	@echo "... core/Process.o"
+	@echo "... core/Process.i"
+	@echo "... core/Process.s"
 	@echo "... render/BackdropBlur.o"
 	@echo "... render/BackdropBlur.i"
 	@echo "... render/BackdropBlur.s"
 	@echo "... render/IconResolver.o"
 	@echo "... render/IconResolver.i"
 	@echo "... render/IconResolver.s"
+	@echo "... system/DesktopIndex.o"
+	@echo "... system/DesktopIndex.i"
+	@echo "... system/DesktopIndex.s"
 	@echo "... tests/blur_test.o"
 	@echo "... tests/blur_test.i"
 	@echo "... tests/blur_test.s"
+	@echo "... tests/desktop_test.o"
+	@echo "... tests/desktop_test.i"
+	@echo "... tests/desktop_test.s"
 	@echo "... tests/icon_test.o"
 	@echo "... tests/icon_test.i"
 	@echo "... tests/icon_test.s"

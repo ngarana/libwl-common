@@ -34,4 +34,10 @@ if(BUILD_TESTING)
     target_link_libraries(icon_test PRIVATE ${CAIRO_LIBRARIES} ${RSVG_LIBRARIES})
     target_compile_options(icon_test PRIVATE ${CAIRO_CFLAGS} ${RSVG_CFLAGS} -Wall -Wextra -UNDEBUG)
     add_test(NAME icon_test COMMAND icon_test)
+
+    add_executable(desktop_test tests/desktop_test.cpp system/DesktopIndex.cpp
+        core/Process.cpp core/EventLoop.cpp)
+    target_include_directories(desktop_test PRIVATE ${CMAKE_SOURCE_DIR})
+    target_compile_options(desktop_test PRIVATE -Wall -Wextra -UNDEBUG)
+    add_test(NAME desktop_test COMMAND desktop_test)
 endif()
